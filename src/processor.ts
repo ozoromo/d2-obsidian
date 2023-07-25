@@ -186,15 +186,31 @@ export class D2Processor {
       options.env.TSTRUCT_TOKEN = this.plugin.settings.apiToken;
     }
 
-    let args = [
-      `d2`,
-      "-",
-      `--theme=${this.plugin.settings.theme}`,
-      `--layout=${this.plugin.settings.layoutEngine}`,
-      `--pad=${this.plugin.settings.pad}`,
-      `--sketch=${this.plugin.settings.sketch}`,
-      "--bundle=false",
-    ];
+
+    if(this.plugin.settings.darkMode) {
+      let args = [
+        `d2`,
+        "-",
+        `--dark-theme=200`
+        `--layout=${this.plugin.settings.layoutEngine}`,
+        `--pad=${this.plugin.settings.pad}`,
+        `--sketch=${this.plugin.settings.sketch}`,
+        "--bundle=false",
+      ];
+    }else {
+      let args = [
+        `d2`,
+        "-",
+        `--theme=${this.plugin.settings.theme}`,
+        `--layout=${this.plugin.settings.layoutEngine}`,
+        `--pad=${this.plugin.settings.pad}`,
+        `--sketch=${this.plugin.settings.sketch}`,
+        "--bundle=false",
+      ];
+    }
+
+
+
     const cmd = args.join(" ");
     const child = exec(cmd, options);
     child.stdin?.write(source);

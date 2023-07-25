@@ -5,6 +5,7 @@ import { LAYOUT_ENGINES } from "./constants";
 
 export interface D2PluginSettings {
   layoutEngine: string;
+  darkMode: boolean;
   apiToken: string;
   debounce: number;
   theme: number;
@@ -16,6 +17,7 @@ export interface D2PluginSettings {
 
 export const DEFAULT_SETTINGS: D2PluginSettings = {
   layoutEngine: "dagre",
+  darkMode: false,
   debounce: 500,
   theme: 0,
   apiToken: "",
